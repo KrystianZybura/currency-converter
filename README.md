@@ -1,2 +1,2 @@
 # currency-converter
-Test
+![currency-converter-animation](images/currency-converter-animation.gif)
