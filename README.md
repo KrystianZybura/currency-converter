@@ -1,7 +1,7 @@
 # currency-converter
 - Simple currency converter.
 - Available currencies: PLN, EUR, USD.
-- Rates are not up-to-date.
+- Rates are not up-to-date (yet).
 ## Demo
 https://krystianzybura.github.io/currency-converter/
 ## Preview
