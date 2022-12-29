@@ -5,7 +5,7 @@
 ## Demo
 https://krystianzybura.github.io/currency-converter/
 ## Preview
-![currency-converter-animation](images/currency-converter-animation.gif)
+![currency-converter-animation](images/preview.gif)
 
 ### Technologies:
 1. HTML.
