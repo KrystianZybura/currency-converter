@@ -10,14 +10,12 @@ html {
 
 .body {
     font-family: 'Open Sans', sans-serif;
-    background: url("../images/background4.jpg");
-    background-position: center;
-    background-size: cover;
+    background-image: url("../images/background3.jpg");
+    background-size: contain;
     color: white;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    backdrop-filter: sepia(0%);
 }
 
 .hidden {
