@@ -10,7 +10,8 @@ html {
 
 .body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #4c2e83;
+    background-image: url("../images/background3.jpg");
+    background-size: contain;
     color: white;
     display: flex;
     flex-direction: column;
