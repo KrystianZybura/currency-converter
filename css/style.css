@@ -10,7 +10,7 @@ html {
 
 .body {
     font-family: 'Open Sans', sans-serif;
-    background-image: url("../images/background3.jpg");
+    background-image: url("../images/background.jpg");
     background-size: contain;
     color: white;
     display: flex;

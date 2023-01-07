@@ -50,25 +50,25 @@
         }
     }
 
-    const switchCurrencyMark = (firstCurrencyMark, secondCurrencyMark) => {
+    const switchCurrencyMark = (firstMark, secondMark) => {
         switch (selectFirstCurrency.value) {
             case "PLN":
-                firstCurrencyMark.innerText = "zł."
-                secondCurrencyMark.innerText = selectSecondCurrency.value === "USD"
+                firstMark.innerText = "zł."
+                secondMark.innerText = selectSecondCurrency.value === "USD"
                     ? "$."
                     : "€.";
                 break;
 
             case "EUR":
-                firstCurrencyMark.innerText = "€.";
-                secondCurrencyMark.innerText = selectSecondCurrency.value === "USD"
+                firstMark.innerText = "€.";
+                secondMark.innerText = selectSecondCurrency.value === "USD"
                     ? "$."
                     : "zł.";
                 break;
 
             case "USD":
-                firstCurrencyMark.innerText = "$.";
-                secondCurrencyMark.innerText = selectSecondCurrency.value === "EUR"
+                firstMark.innerText = "$.";
+                secondMark.innerText = selectSecondCurrency.value === "EUR"
                     ? "€."
                     : "zł.";
                 break;
