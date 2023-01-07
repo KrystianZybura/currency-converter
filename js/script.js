@@ -31,21 +31,21 @@
         }
     }
 
-    const switchIdenticalCurrencyMark = (firstCurrencyMark, secondCurrencyMark) => {
+    const switchIdenticalCurrencyMark = (firstMark, secondMark) => {
         switch (selectFirstCurrency.value) {
             case "PLN":
-                firstCurrencyMark.innerText = "zł."
-                secondCurrencyMark.innerText = "zł."
+                firstMark.innerText = "zł."
+                secondMark.innerText = "zł."
                 break;
 
             case "EUR":
-                firstCurrencyMark.innerText = "€."
-                secondCurrencyMark.innerText = "€."
+                firstMark.innerText = "€."
+                secondMark.innerText = "€."
                 break;
 
             case "USD":
-                firstCurrencyMark.innerText = "$."
-                secondCurrencyMark.innerText = "$."
+                firstMark.innerText = "$."
+                secondMark.innerText = "$."
                 break;
         }
     }
@@ -77,8 +77,8 @@
 
     const countCurrencySubmit = (event) => {
         const warningMessage = document.querySelector(".js-warningMessage");
-
         event.preventDefault();
+
         if (selectFirstCurrency.value === selectSecondCurrency.value) {
             warningMessage.classList.remove("hidden");
         }
@@ -87,6 +87,7 @@
             calculateOutputCurrency();
         }
     }
+
     const changeCurrencyMark = () => {
         const firstCurrencyMark = document.querySelector(".js-firstCurrencyMark");
         const secondCurrencyMark = document.querySelector(".js-secondCurrencyMark");
