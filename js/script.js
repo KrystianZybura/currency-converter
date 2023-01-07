@@ -75,17 +75,21 @@
         }
     }
 
-    const countCurrencySubmit = (event) => {
+    const displayWarningMessage = () => {
         const warningMessage = document.querySelector(".js-warningMessage");
-        event.preventDefault();
 
-        if (selectFirstCurrency.value === selectSecondCurrency.value) {
-            warningMessage.classList.remove("hidden");
-        }
-        else {
-            warningMessage.classList.add("hidden");
+        selectFirstCurrency.value === selectSecondCurrency.value
+            ? warningMessage.classList.remove("hidden")
+            : warningMessage.classList.add("hidden");
+    }
+
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        displayWarningMessage();
+
+        if (selectFirstCurrency.value !== selectSecondCurrency.value)
             calculateOutputCurrency();
-        }
     }
 
     const changeCurrencyMark = () => {
@@ -97,10 +101,14 @@
             : switchCurrencyMark(firstCurrencyMark, secondCurrencyMark);
     }
 
-    const init = () => {
+    const onFormInteraction = () => {
         const formElement = document.querySelector(".js-form");
-        formElement.addEventListener("submit", countCurrencySubmit);
+        formElement.addEventListener("submit", onFormSubmit);
         formElement.addEventListener("input", changeCurrencyMark);
+    }
+
+    const init = () => {
+        onFormInteraction();
     }
 
     init();
