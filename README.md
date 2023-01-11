@@ -1,13 +1,16 @@
-# currency-converter
+# Krystian Żybura - Currency converter
 - Simple currency converter.
 - Available currencies: PLN, EUR, USD.
 - Rates are not up-to-date (yet).
 ## Demo
-https://krystianzybura.github.io/currency-converter/
+Check my currency-converter here --> [Currency-converter](https://krystianzybura.github.io/currency-converter/).
 ## Preview
+A qucik preview with an example showing how it works!
 ![currency-converter-animation](images/preview.gif)
 
 ### Technologies:
-1. HTML.
-2. CSS.
-3. JS.
+- *HTML*.
+- *CSS*.
+- *FLEXBOX*.
+- *JavaScript + ES6*.
+- *BEM*
