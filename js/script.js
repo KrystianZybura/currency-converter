@@ -30,26 +30,7 @@
                 return amount * usdToEurRate;
         }
     }
-
-    const switchIdenticalCurrencyMark = (firstMark, secondMark) => {
-        switch (selectFirstCurrency.value) {
-            case "PLN":
-                firstMark.innerText = "zł."
-                secondMark.innerText = "zł."
-                break;
-
-            case "EUR":
-                firstMark.innerText = "€."
-                secondMark.innerText = "€."
-                break;
-
-            case "USD":
-                firstMark.innerText = "$."
-                secondMark.innerText = "$."
-                break;
-        }
-    }
-
+    
     const getCurrencyMark = (currency) => {
         switch (currency) {
             case "PLN":
@@ -92,13 +73,8 @@
         const firstCurrencyMark = document.querySelector(".js-firstCurrencyMark");
         const secondCurrencyMark = document.querySelector(".js-secondCurrencyMark");
 
-        if (selectFirstCurrency.value === selectSecondCurrency.value) {
-            switchIdenticalCurrencyMark(firstCurrencyMark, secondCurrencyMark);
-        }
-        else {
             firstCurrencyMark.innerText = getCurrencyMark(selectFirstCurrency.value);
             secondCurrencyMark.innerText = getCurrencyMark(selectSecondCurrency.value);
-        }
     }
 
     const init = () => {
