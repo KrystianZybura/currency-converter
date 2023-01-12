@@ -2,32 +2,32 @@
     const selectFirstCurrency = document.querySelector(".js-selectFirstCurrency");
     const selectSecondCurrency = document.querySelector(".js-selectSecondCurrency");
 
-    const calculateOutputCurrency = () => {
-        const inputCurrency = document.querySelector(".js-inputCurrency");
-        const outputCurrency = document.querySelector(".js-outputCurrency");
+    const calculateResult = (inputCurrency, outputCurrency, amount) => {
 
-        const usdToPlnRate = 4.40;
-        const eurToPlnRate = 4.67;
-        const usdToEurRate = 0.94;
+        const usdToPlnRate = 4.36;
+        const eurToPlnRate = 4.68;
+        const usdToEurRate = 0.93;
 
-        switch (selectFirstCurrency.value) {
-            case "PLN":
-                outputCurrency.value = selectSecondCurrency.value === "USD"
-                    ? (+inputCurrency.value / usdToPlnRate).toFixed(2)
-                    : (+inputCurrency.value / eurToPlnRate).toFixed(2);
-                break;
+        const currencyPair = `${inputCurrency}/${outputCurrency}`;
 
-            case "EUR":
-                outputCurrency.value = selectSecondCurrency.value === "USD"
-                    ? (+inputCurrency.value / usdToEurRate).toFixed(2)
-                    : (+inputCurrency.value * eurToPlnRate).toFixed(2);
-                break;
+        switch (currencyPair) {
+            case "PLN/USD":
+                return amount / usdToPlnRate;
 
-            case "USD":
-                outputCurrency.value = selectSecondCurrency.value === "EUR"
-                    ? (+inputCurrency.value * usdToEurRate).toFixed(2)
-                    : (+inputCurrency.value * usdToPlnRate).toFixed(2);
-                break;
+            case "PLN/EUR":
+                return amount / eurToPlnRate;
+
+            case "EUR/USD":
+                return amount / usdToEurRate;
+
+            case "EUR/PLN":
+                return amount * eurToPlnRate;
+
+            case "USD/PLN":
+                return amount * usdToPlnRate;
+
+            case "USD/EUR":
+                return amount * usdToEurRate;
         }
     }
 
@@ -50,32 +50,9 @@
         }
     }
 
-    const switchCurrencyMark = (firstMark, secondMark) => {
-        switch (selectFirstCurrency.value) {
-            case "PLN":
-                firstMark.innerText = "zł."
-                secondMark.innerText = selectSecondCurrency.value === "USD"
-                    ? "$."
-                    : "€.";
-                break;
+    const getCurrencyMark = () => `${selectFirstCurrency.value}/${selectSecondCurrency.value}`
 
-            case "EUR":
-                firstMark.innerText = "€.";
-                secondMark.innerText = selectSecondCurrency.value === "USD"
-                    ? "$."
-                    : "zł.";
-                break;
-
-            case "USD":
-                firstMark.innerText = "$.";
-                secondMark.innerText = selectSecondCurrency.value === "EUR"
-                    ? "€."
-                    : "zł.";
-                break;
-        }
-    }
-
-    const displayWarningMessage = () => {
+    const validateForm = () => {
         const warningMessage = document.querySelector(".js-warningMessage");
 
         selectFirstCurrency.value === selectSecondCurrency.value
@@ -86,29 +63,66 @@
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        displayWarningMessage();
+        validateForm();
 
-        if (selectFirstCurrency.value !== selectSecondCurrency.value)
-            calculateOutputCurrency();
+        if (selectFirstCurrency.value !== selectSecondCurrency.value) {
+            const amountElement = document.querySelector(".js-amount");
+            const resultElement = document.querySelector(".js-result");
+
+            const result = calculateResult(selectFirstCurrency.value, selectSecondCurrency.value, +amountElement.value);
+
+            resultElement.value = result.toFixed(2);
+        }
     }
 
     const changeCurrencyMark = () => {
         const firstCurrencyMark = document.querySelector(".js-firstCurrencyMark");
         const secondCurrencyMark = document.querySelector(".js-secondCurrencyMark");
 
-        selectFirstCurrency.value === selectSecondCurrency.value
-            ? switchIdenticalCurrencyMark(firstCurrencyMark, secondCurrencyMark)
-            : switchCurrencyMark(firstCurrencyMark, secondCurrencyMark);
-    }
+        if (selectFirstCurrency.value === selectSecondCurrency.value)
+            switchIdenticalCurrencyMark(firstCurrencyMark, secondCurrencyMark)
+        else {
+            const currencyMarks = getCurrencyMark();
 
-    const onFormInteraction = () => {
-        const formElement = document.querySelector(".js-form");
-        formElement.addEventListener("submit", onFormSubmit);
-        formElement.addEventListener("input", changeCurrencyMark);
+            switch (currencyMarks) {
+                case "PLN/USD":
+                    firstCurrencyMark.innerText = "zł.";
+                    secondCurrencyMark.innerText = "$.";
+                    break;
+
+                case "PLN/EUR":
+                    firstCurrencyMark.innerText = "zł.";
+                    secondCurrencyMark.innerText = "€.";
+                    break;
+
+                case "USD/PLN":
+                    firstCurrencyMark.innerText = "$.";
+                    secondCurrencyMark.innerText = "zł.";
+                    break;
+
+                case "USD/EUR":
+                    firstCurrencyMark.innerText = "$.";
+                    secondCurrencyMark.innerText = "€.";
+                    break;
+
+                case "EUR/PLN":
+                    firstCurrencyMark.innerText = "€.";
+                    secondCurrencyMark.innerText = "zł.";
+                    break;
+
+                case "EUR/USD":
+                    firstCurrencyMark.innerText = "€.";
+                    secondCurrencyMark.innerText = "$.";
+                    break;
+            }
+        }
     }
 
     const init = () => {
-        onFormInteraction();
+        const formElement = document.querySelector(".js-form");
+
+        formElement.addEventListener("submit", onFormSubmit);
+        formElement.addEventListener("input", changeCurrencyMark);
     }
 
     init();
