@@ -50,7 +50,7 @@
         }
     }
 
-    const getCurrencyMark = () => `${selectFirstCurrency.value}/${selectSecondCurrency.value}`
+    const getCurrencyMark = () => `${selectFirstCurrency.value}/${selectSecondCurrency.value}`;
 
     const validateForm = () => {
         const warningMessage = document.querySelector(".js-warningMessage");
@@ -59,7 +59,6 @@
             ? warningMessage.classList.remove("hidden")
             : warningMessage.classList.add("hidden");
     }
-
 
     const onFormSubmit = (event) => {
         event.preventDefault();
