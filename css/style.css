@@ -11,7 +11,9 @@ html {
 .body {
     font-family: 'Open Sans', sans-serif;
     background-image: url("../images/background.jpg");
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     color: white;
     display: flex;
     flex-direction: column;
