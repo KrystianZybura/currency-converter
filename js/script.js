@@ -80,7 +80,7 @@
         const secondCurrencyMark = document.querySelector(".js-secondCurrencyMark");
 
         if (selectFirstCurrency.value === selectSecondCurrency.value)
-            switchIdenticalCurrencyMark(firstCurrencyMark, secondCurrencyMark)
+            switchIdenticalCurrencyMark(firstCurrencyMark, secondCurrencyMark);
         else {
             const currencyMarks = getCurrencyMark();
 
