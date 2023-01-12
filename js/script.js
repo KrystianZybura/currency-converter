@@ -50,7 +50,18 @@
         }
     }
 
-    const getCurrencyMark = () => `${selectFirstCurrency.value}/${selectSecondCurrency.value}`;
+    const getCurrencyMark = (currency) => {
+        switch (currency) {
+            case "PLN":
+                return "zł.";
+
+            case "EUR":
+                return "€.";
+
+            case "USD":
+                return "$.";
+        }
+    }
 
     const validateForm = () => {
         const warningMessage = document.querySelector(".js-warningMessage");
@@ -62,16 +73,19 @@
 
     const onFormSubmit = (event) => {
         event.preventDefault();
+
         validateForm();
 
-        if (selectFirstCurrency.value !== selectSecondCurrency.value) {
-            const amountElement = document.querySelector(".js-amount");
-            const resultElement = document.querySelector(".js-result");
-
-            const result = calculateResult(selectFirstCurrency.value, selectSecondCurrency.value, +amountElement.value);
-
-            resultElement.value = result.toFixed(2);
+        if (selectFirstCurrency.value === selectSecondCurrency.value) {
+            return;
         }
+
+        const amountElement = document.querySelector(".js-amount");
+        const resultElement = document.querySelector(".js-result");
+
+        const result = calculateResult(selectFirstCurrency.value, selectSecondCurrency.value, +amountElement.value);
+
+        resultElement.value = result.toFixed(2);
     }
 
     const changeCurrencyMark = () => {
@@ -82,39 +96,8 @@
             switchIdenticalCurrencyMark(firstCurrencyMark, secondCurrencyMark);
         }
         else {
-            const currencyMarks = getCurrencyMark();
-
-            switch (currencyMarks) {
-                case "PLN/USD":
-                    firstCurrencyMark.innerText = "zł.";
-                    secondCurrencyMark.innerText = "$.";
-                    break;
-
-                case "PLN/EUR":
-                    firstCurrencyMark.innerText = "zł.";
-                    secondCurrencyMark.innerText = "€.";
-                    break;
-
-                case "USD/PLN":
-                    firstCurrencyMark.innerText = "$.";
-                    secondCurrencyMark.innerText = "zł.";
-                    break;
-
-                case "USD/EUR":
-                    firstCurrencyMark.innerText = "$.";
-                    secondCurrencyMark.innerText = "€.";
-                    break;
-
-                case "EUR/PLN":
-                    firstCurrencyMark.innerText = "€.";
-                    secondCurrencyMark.innerText = "zł.";
-                    break;
-
-                case "EUR/USD":
-                    firstCurrencyMark.innerText = "€.";
-                    secondCurrencyMark.innerText = "$.";
-                    break;
-            }
+            firstCurrencyMark.innerText = getCurrencyMark(selectFirstCurrency.value);
+            secondCurrencyMark.innerText = getCurrencyMark(selectSecondCurrency.value);
         }
     }
 
