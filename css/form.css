@@ -1,7 +1,7 @@
 .form {
     font-size: 20px;
     text-align: center;
-    margin-bottom: 125px;
+    flex-basis: 800px;
 }
 
 .form__fieldset {
