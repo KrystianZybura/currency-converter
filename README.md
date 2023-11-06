@@ -1,7 +1,7 @@
 # Krystian Żybura - Currency converter
 - Simple currency converter.
 - Available currencies: PLN, EUR, USD.
-- Rates are not up-to-date (yet).
+- Rates are not up-to-date.
 ## Demo
 Check my currency-converter here --> [Currency-converter](https://krystianzybura.github.io/currency-converter/).
 ## Preview
